@@ -18,6 +18,10 @@ import {
   Link
 } from "react-router-dom"; 
 
+import { Button } from '@material-ui/core'
+import GitHubIcon from '@material-ui/icons/GitHub';
+
+
 function App() {
   
   const classes = useStyles();
@@ -36,7 +40,15 @@ function App() {
       setTheme('light');
     }
   }
-
+  const GitHubButton = <div className = "gh-button">
+    <Button  
+    color="primary" 
+    href="https://github.com/ogigg" 
+    startIcon={<GitHubIcon />}
+    target="_blank">
+       My GitHub </Button>
+    </div>
+  
 
   useEffect(() => {
     
@@ -62,11 +74,14 @@ function App() {
   return (
 
           <ThemeProvider   theme={theme === 'light' ? lightTheme : darkTheme}>
+          
           <div className={classes.app}>
+            
             <div onMouseOver={() => setRainbowText(true)}
               onMouseLeave = {() => setRainbowText(false)}
               className={classes.header}
             >{header}</div>
+            {GitHubButton}
             {projectsCards}
             
           </div>
